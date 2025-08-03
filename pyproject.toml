@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gemini-mcp-python"
+version = "1.0.0"
+description = "Python-based MCP server for Gemini API orchestration"
+authors = [
+    {name = "Desi Feynman", email = "dev@desifeynman.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.0.0",
+    "google-generativeai>=0.8.0",
+    "aiofiles",
+    "pydantic>=2.0.0",
+    "python-dotenv",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "black",
+    "ruff",
+]
+
+[project.scripts]
+gemini-mcp-server = "gemini_mcp.server:main"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gemini_mcp"]

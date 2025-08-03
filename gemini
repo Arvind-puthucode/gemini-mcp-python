@@ -1,0 +1,14 @@
+#!/bin/bash
+# Convenient wrapper for Gemini CLI orchestrator
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# Check if we're in the right directory
+if [ ! -f "cli_orchestrator.py" ]; then
+    echo "❌ Error: cli_orchestrator.py not found in $SCRIPT_DIR"
+    exit 1
+fi
+
+# Execute the CLI orchestrator with all arguments
+python cli_orchestrator.py "$@"
